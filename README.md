@@ -89,7 +89,11 @@ Each subset requires $O(n)$ processing time.
 
 The overall worst case asymptotic time complexity is thus $Θ(n^2 ∗ 2^n). 
 
-This matches the theoretical expectation for the help karp algorithm per the attatched cited sources, consulted to verify how reasonable the computed runtime of my implementation actually was or not.
+This matches the theoretical expectation for the help karp algorithm per the attatched python TSP solution source.
+
+...This source was consulted to verify how reasonable the computed runtime of my implementation actually was or not, as I thought it appeared off.
+
+I barely looked at the actual logic and code of the python source as its uber condensed look makes my eyes want to explode.
 
 
 
@@ -110,7 +114,7 @@ The recursion stack uses $O(n^2)$ space in the worst case.
 
 (via n-1 levels * $O(n)$ storage per level, while the matrix requires $O(n^2)$ space).
 
-Due to this, the overall worst case asymptotic memory complexity is O(n^2).
+Due to this, the overall worst case asymptotic memory complexity is $O(n^2)$.
 
 
 
