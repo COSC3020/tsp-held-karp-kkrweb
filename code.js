@@ -50,7 +50,7 @@ function tsp_hk(distanceMatrix)
         citiesList.push(i);
     }
 
-    var shortestLen = findDistMin(citiesList, distanceMatrix);
+    var shortestLen = findMinDist(citiesList, distanceMatrix);
     
     if(shortestLen == null)
     {
@@ -67,7 +67,7 @@ function tsp_hk(distanceMatrix)
 //
 
 
-function findDistMin(citiesList, distanceMatrix)
+function findMinDist(citiesList, distanceMatrix)
 {
     var shortestLen = null;
     
