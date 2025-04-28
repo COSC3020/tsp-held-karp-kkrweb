@@ -25,7 +25,7 @@ heldKarp(cities, start)
 */
 
 
-function tspHk(distanceMatrix)
+function tsp_hk(distanceMatrix)
 {
     if(distanceMatrix == null || distanceMatrix.length == 0)
     {
