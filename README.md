@@ -122,7 +122,14 @@ Due to this, the overall worst case asymptotic memory complexity is $O(n^2)$.
 //
 
 
+
 Plagiarism Acknowledgement: I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice.
 
 
 Citations:
+
+Ensured that any consulted logic / conceptual help to help move me in the right direction came only where applicable and without any amount of JS code
+
+https://www.geeksforgeeks.org/traveling-salesman-problem-tsp-in-python/
+
+https://medium.com/@davidlfliang/intro-python-algorithms-traveling-salesman-problem-ffa61f0bd47b
