@@ -56,7 +56,7 @@ Name: Kane Kriz
 
 Start Date: 17 April 2025
 
-Last Edited: 17 April 2025
+Last Edited: 28 April 2025
 
 Feedback Request 1 Date: X
 
@@ -66,7 +66,16 @@ Feedback Request 1 Date: X
 //
 
 
-Response: Incomplete
+Response: WIP
+
+First, I want to analyze the functionality of the implementation step by step and work inwards to help determine the overall complexity.
+...
+Due to this, the overall worst case asymptotic time complexity of the implementation is A.
+
+Now to consider the overall memory complexity.
+...
+Due to this, the overall worst case asymptotic memory complexity of the implementation is B.
+
 
 
 
