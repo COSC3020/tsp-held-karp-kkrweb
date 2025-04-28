@@ -66,15 +66,51 @@ Feedback Request 1 Date: X
 //
 
 
+
 Response: WIP
 
-First, I want to analyze the functionality of the implementation step by step and work inwards to help determine the overall complexity.
-...
-Due to this, the overall worst case asymptotic time complexity of the implementation is A.
 
-Now to consider the overall memory complexity.
-...
-Due to this, the overall worst case asymptotic memory complexity of the implementation is B.
+
+First, I want to analyze the functionality of the implementation step by step and work inwards to help determine the overall complexity. 
+
+The implementation begins with input validation through the checks `if(distanceMatrix == null || distanceMatrix.length == 0)` and `if(distanceMatrix.length == 1)`, which handle edge cases in constant time. 
+
+The core algorithm then initializes the city indices through the loop `for(var i = 0; i < distanceMatrix.length; i++) { citiesList.push(i); }`, requiring $O(n)$ time where n is the number of cities.
+
+The recursive `solve` function forms the heart of the implementation, processing city subsets through the base case `if(citiesList.length == 2)` and recursive decomposition. 
+
+Each recursive call handles a smaller subproblem through `var partialDistance = solve(remainingCities, nextCity, distanceMatrix)`.
+
+The combination step `var totalDistance = partialDistance + stepDistance` builds up complete solutions from these partial results. 
+
+The algorithm must explore all possible city subsets and starting points, with n choices for the starting city and $\binom{n}{k}$ possible subsets for each subset size k, summing to $2^n$ total subsets.
+
+Each subset requires $O(n)$ processing time.
+
+The overall worst case asymptotic time complexity is thus $Θ(n^2 ∗ 2^n). 
+
+This matches the theoretical expectation for the help karp algorithm per the attatched cited sources, consulted to verify how reasonable the computed runtime of my implementation actually was or not.
+
+
+
+
+Now to consider the overall asymptotic memory complexity. 
+
+The implementation maintains a recursion stack that can reach depth n-1 levels.
+
+Each recursive level stores its remaining cities list through operations like `remainingCities.push(citiesList[i])`, requiring $O(n)$ space per level. 
+
+The distance matrix requires $O(n^2)$ storage space.
+
+Temporary variables contribute constant space per recursion level.
+
+The current recursive implementation without memoization means the space is dominated by the matrix storage and maximum stack storage. 
+
+The recursion stack uses $O(n^2)$ space in the worst case.
+
+(via n-1 levels * $O(n)$ storage per level, while the matrix requires $O(n^2)$ space).
+
+Due to this, the overall worst case asymptotic memory complexity is O(n^2).
 
 
 
