@@ -8,6 +8,8 @@
 //
 
 
+
+
 /*_____PSUEDOCODE PROVIDED:_____
 
 
@@ -23,6 +25,9 @@ heldKarp(cities, start)
 
 
 */
+
+
+//
 
 
 function tsp_hk(distanceMatrix)
@@ -57,7 +62,11 @@ function tsp_hk(distanceMatrix)
 }
 
 
+
+
 //
+
+
 
 
 function findDistMin(citiesList, distanceMatrix)
@@ -78,7 +87,11 @@ function findDistMin(citiesList, distanceMatrix)
 }
 
 
+
+
 //
+
+
 
 
 function solve(citiesList, start, distanceMatrix)
@@ -126,6 +139,7 @@ function solve(citiesList, start, distanceMatrix)
     
     return minDistance;
 }
+
 
 
 //
