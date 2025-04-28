@@ -30,16 +30,17 @@ heldKarp(cities, start)
 //
 
 
+
 function tsp_hk(distanceMatrix)
 {
-    if(distanceMatrix.length == 1)
-    {
-        return 0;
-    }
-  
     if(distanceMatrix == null || distanceMatrix.length == 0)
     {
         return -1;
+    }
+
+    if(distanceMatrix.length == 1)
+    {
+        return 0;
     }
 
     var citiesList = [];
@@ -51,10 +52,11 @@ function tsp_hk(distanceMatrix)
 
     var shortestLen = findDistMin(citiesList, distanceMatrix);
     
-    if(shortestLen == Infinity)
+    if(shortestLen == null)
     {
         return -1;
     }
+      
     else
     {
         return shortestLen;
@@ -62,22 +64,18 @@ function tsp_hk(distanceMatrix)
 }
 
 
-
-
 //
-
-
 
 
 function findDistMin(citiesList, distanceMatrix)
 {
-    var shortestLen = Infinity;
+    var shortestLen = null;
     
     for(var i = 0; i < citiesList.length; i++)
     {
         var currentLen = solve(citiesList, citiesList[i], distanceMatrix);
         
-        if(currentLen < shortestLen)
+        if(currentLen != null && (shortestLen == null || currentLen < shortestLen))
         {
             shortestLen = currentLen;
         }
@@ -87,11 +85,7 @@ function findDistMin(citiesList, distanceMatrix)
 }
 
 
-
-
 //
-
-
 
 
 function solve(citiesList, start, distanceMatrix)
@@ -109,10 +103,20 @@ function solve(citiesList, start, distanceMatrix)
             destinationCity = citiesList[0];
         }
         
-        return distanceMatrix[start][destinationCity];
+        var distance = distanceMatrix[start][destinationCity];
+      
+        if(distance >= 0)
+        {
+            return distance;
+        }
+          
+        else
+        {
+            return null;
+        }
     }
 
-    var minDistance = Infinity;
+    var minDistance = null;
     var remainingCities = [];
     
     for(var i = 0; i < citiesList.length; i++)
@@ -127,19 +131,21 @@ function solve(citiesList, start, distanceMatrix)
     {
         var nextCity = remainingCities[i];
         var partialDistance = solve(remainingCities, nextCity, distanceMatrix);
-      
         var stepDistance = distanceMatrix[start][nextCity];
-        var totalDistance = partialDistance + stepDistance;
         
-        if(totalDistance < minDistance)
+        if(partialDistance != null && stepDistance >= 0)
         {
-            minDistance = totalDistance;
+            var totalDistance = partialDistance + stepDistance;
+          
+            if(minDistance == null || totalDistance < minDistance)
+            {
+                minDistance = totalDistance;
+            }
         }
     }
     
     return minDistance;
 }
-
 
 
 //
