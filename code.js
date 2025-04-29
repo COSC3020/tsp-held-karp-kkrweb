@@ -30,6 +30,8 @@ heldKarp(cities, start)
 //
 
 
+/*NUKED
+
 function tsp_hk(distanceMatrix)
 {
     if((distanceMatrix == null) || distanceMatrix.length == 0)
@@ -161,5 +163,8 @@ function solve(citiesList, start, distanceMatrix, memoStorage)
     return minDistance;
 }
 
-
 //
+
+*/
+
+
