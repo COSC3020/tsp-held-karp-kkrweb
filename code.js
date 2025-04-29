@@ -1,7 +1,7 @@
 // Kane Kriz
 // UWYO COSC 3020 Algorithms
 // TSP Held Karp Exercise - primary js file
-// 28 April 2025
+// 29 April 2025
 //
 
 
@@ -30,10 +30,9 @@ heldKarp(cities, start)
 //
 
 
-
 function tsp_hk(distanceMatrix)
 {
-    if(distanceMatrix == null || distanceMatrix.length == 0)
+    if((distanceMatrix == null) || distanceMatrix.length == 0)
     {
         return -1;
     }
@@ -70,12 +69,13 @@ function tsp_hk(distanceMatrix)
 function findMinDist(citiesList, distanceMatrix)
 {
     var shortestLen = null;
+    var memoStorage = {};
     
     for(var i = 0; i < citiesList.length; i++)
     {
-        var currentLen = solve(citiesList, citiesList[i], distanceMatrix);
+        var currentLen = solve(citiesList, citiesList[i], distanceMatrix, memoStorage);
         
-        if(currentLen != null && (shortestLen == null || currentLen < shortestLen))
+        if(currentLen != null && (shortestLen == null || (currentLen < shortestLen)))
         {
             shortestLen = currentLen;
         }
@@ -88,8 +88,18 @@ function findMinDist(citiesList, distanceMatrix)
 //
 
 
-function solve(citiesList, start, distanceMatrix)
+function solve(citiesList, start, distanceMatrix, memoStorage)
 {
+    if (!memoStorage[citiesList.length])
+    {
+        memoStorage[citiesList.length] = {};
+    }
+    
+    if(memoStorage[citiesList.length][start] !== undefined)
+    {
+        return memoStorage[citiesList.length][start];
+    }
+
     if(citiesList.length == 2)
     {
         var destinationCity;
@@ -98,6 +108,7 @@ function solve(citiesList, start, distanceMatrix)
         {
             destinationCity = citiesList[1];
         }
+          
         else
         {
             destinationCity = citiesList[0];
@@ -107,11 +118,13 @@ function solve(citiesList, start, distanceMatrix)
       
         if(distance >= 0)
         {
+            memoStorage[citiesList.length][start] = distance;
             return distance;
         }
           
         else
         {
+            memoStorage[citiesList.length][start] = null;
             return null;
         }
     }
@@ -130,20 +143,21 @@ function solve(citiesList, start, distanceMatrix)
     for(var i = 0; i < remainingCities.length; i++)
     {
         var nextCity = remainingCities[i];
-        var partialDistance = solve(remainingCities, nextCity, distanceMatrix);
+        var partialDistance = solve(remainingCities, nextCity, distanceMatrix, memoStorage);
         var stepDistance = distanceMatrix[start][nextCity];
         
         if(partialDistance != null && stepDistance >= 0)
         {
             var totalDistance = partialDistance + stepDistance;
           
-            if(minDistance == null || totalDistance < minDistance)
+            if(minDistance == null || (totalDistance < minDistance))
             {
                 minDistance = totalDistance;
             }
         }
     }
     
+    memoStorage[citiesList.length][start] = minDistance;
     return minDistance;
 }
 
