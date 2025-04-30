@@ -96,7 +96,7 @@ The algorithm must explore all possible city subsets and starting points, with n
 
 Each subset requires $O(n)$ processing time.
 
-The overall worst case asymptotic time complexity is thus $O(n^2 ∗ 2^n). 
+The overall worst case asymptotic time complexity is thus $O(n^2 ∗ 2^n)$. 
 
 This matches the theoretical expectation for the help karp algorithm per the attatched python TSP solution source.
 
