@@ -1,7 +1,7 @@
 // Kane Kriz
 // UWYO COSC 3020 Algorithms
 // TSP Held Karp Exercise - primary js file
-// 29 April 2025
+// 30 April 2025
 //
 
 
@@ -90,16 +90,13 @@ function findMinDist(citiesList, distanceMatrix)
 //
 
 
-function solve(citiesList, start, distanceMatrix, memoStorage)
+ function solve(citiesList, start, distanceMatrix, memoStorage)
 {
-    if (!memoStorage[citiesList.length])
-    {
-        memoStorage[citiesList.length] = {};
-    }
+    var key = JSON.stringify(citiesList) + start; //used sources to help actually implement the memoization and related key correctly
     
-    if(memoStorage[citiesList.length][start] !== undefined)
+    if(memoStorage[key] !== undefined)
     {
-        return memoStorage[citiesList.length][start];
+        return memoStorage[key];
     }
 
     if(citiesList.length == 2)
@@ -120,13 +117,13 @@ function solve(citiesList, start, distanceMatrix, memoStorage)
       
         if(distance >= 0)
         {
-            memoStorage[citiesList.length][start] = distance;
+            memoStorage[key] = distance;
             return distance;
         }
           
         else
         {
-            memoStorage[citiesList.length][start] = null;
+            memoStorage[key] = null;
             return null;
         }
     }
@@ -159,11 +156,10 @@ function solve(citiesList, start, distanceMatrix, memoStorage)
         }
     }
     
-    memoStorage[citiesList.length][start] = minDistance;
+    memoStorage[key] = minDistance;
     return minDistance;
 }
 
+
+
 //
-
-
-
