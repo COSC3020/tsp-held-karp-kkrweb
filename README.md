@@ -66,6 +66,12 @@ Feedback Request 1 Date: 28 April 2025
 //
 
 
+Feedback Request 2 Date: X
+
+
+//
+
+
 
 Response: WIP
 
@@ -130,8 +136,10 @@ Plagiarism Acknowledgement: I certify that I have listed all sources used to com
 
 Citations:
 
-Ensured that any consulted logic / conceptual help to help move me in the right direction came only where applicable and without any amount of JS code
+Ensured that any consulted logic / conceptual help to help move me in the right direction came only where applicable and with limited JS code
 
 “Traveling Salesman Problem (TSP) in Python.” GeeksforGeeks, 31 May 2024, www.geeksforgeeks.org/traveling-salesman-problem-tsp-in-python/.
 
 Liang, David. “Intro — Python Algorithms: Traveling Salesman Problem.” Medium, 17 July 2024, medium.com/@davidlfliang/intro-python-algorithms-traveling-salesman-problem-ffa61f0bd47b.
+
+the, Caching. “Memoization: Caching the Results of Expensive Function Calls.” SoftwarePatternsLexicon.com, 7 July 2024, softwarepatternslexicon.com/functional/optimizations/caching-and-specialization/memoization/. Accessed 30 Apr. 2025.
