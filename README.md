@@ -66,16 +66,16 @@ Feedback Request 1 Date: 28 April 2025
 //
 
 
-Feedback Request 2 Date: X
+Feedback Request 2 Date: 30 April 2025
 
 
 //
 
 
 
-Response: WIP
+Response: 
 
-(Needs to be redone as the code is currently wrong)
+
 
 
 First, I want to analyze the functionality of the implementation step by step and work inwards to help determine the overall complexity. 
@@ -90,11 +90,13 @@ Each recursive call handles a smaller subproblem through `var partialDistance = 
 
 The combination step `var totalDistance = partialDistance + stepDistance` builds up complete solutions from these partial results. 
 
+The current implementation’s memoization key `JSON.stringify(citiesList) + start` ensures uniqueness and acts against potential collision issues.
+
 The algorithm must explore all possible city subsets and starting points, with n choices for the starting city and $\binom{n}{k}$ possible subsets for each subset size k, summing to $2^n$ total subsets.
 
 Each subset requires $O(n)$ processing time.
 
-The overall worst case asymptotic time complexity is thus $Θ(n^2 ∗ 2^n). 
+The overall worst case asymptotic time complexity is thus $O(n^2 ∗ 2^n). 
 
 This matches the theoretical expectation for the help karp algorithm per the attatched python TSP solution source.
 
@@ -117,7 +119,7 @@ Temporary variables contribute constant space per recursion level.
 
 The current recursive implementation without memoization means the space is dominated by the matrix storage and maximum stack storage. 
 
-The recursion stack uses $O(n^2)$ space in the worst case.
+The recursion stack uses $O(n)$ space per call and $O(n * 2^n)$ total space with memoization.
 
 (via n-1 levels * $O(n)$ storage per level, while the matrix requires $O(n^2)$ space).
 
