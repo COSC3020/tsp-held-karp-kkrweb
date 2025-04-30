@@ -30,7 +30,7 @@ heldKarp(cities, start)
 //
 
 
-/*NUKED
+
 
 function tsp_hk(distanceMatrix)
 {
@@ -165,6 +165,5 @@ function solve(citiesList, start, distanceMatrix, memoStorage)
 
 //
 
-*/
 
 
