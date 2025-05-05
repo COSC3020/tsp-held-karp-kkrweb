@@ -69,6 +69,9 @@ Feedback Request 1 Date: 28 April 2025
 Feedback Request 2 Date: 30 April 2025
 
 
+...
+
+
 //
 
 
@@ -113,18 +116,15 @@ The implementation maintains a recursion stack that can reach depth n-1 levels.
 
 Each recursive level stores its remaining cities list through operations like `remainingCities.push(citiesList[i])`, requiring $O(n)$ space per level. 
 
-The distance matrix requires $O(n^2)$ storage space.
+The memoization storage requires $O(n * 2^n)$ space for all city subsets.
 
 Temporary variables contribute constant space per recursion level.
 
-The current recursive implementation without memoization means the space is dominated by the matrix storage and maximum stack storage. 
+The recursion stack uses $O(n)$ space per call and $O(n^2)$ total space maximum.
 
-The recursion stack uses $O(n)$ space per call and $O(n * 2^n)$ total space with memoization.
+(via n-1 levels * O(n) storage per level, with subset storage requiring $O(n * 2^n)$ space).
 
-(via n-1 levels * $O(n)$ storage per level, while the matrix requires $O(n^2)$ space).
-
-Due to this, the overall worst case asymptotic memory complexity is $O(n^2)$.
-
+Due to this, the overall worst case asymptotic memory complexity is $O(n * 2^n)$
 
 
 
