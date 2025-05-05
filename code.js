@@ -92,7 +92,7 @@ function findMinDist(citiesList, distanceMatrix)
 
  function solve(citiesList, start, distanceMatrix, memoStorage)
 {
-    var key = JSON.stringify(citiesList) + start; //used sources to help actually implement the memoization and related key correctly
+    var key = JSON.stringify(citiesList.slice().sort()) + start; //used sources to help actually implement the memoization and related key correctly
     
     if(memoStorage[key] !== undefined)
     {
