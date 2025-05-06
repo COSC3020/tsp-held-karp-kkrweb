@@ -103,7 +103,7 @@ The overall worst case asymptotic time complexity is thus $O(n^2 ∗ 2^n)$.
 
 This matches the theoretical expectation for the help karp algorithm per the attatched python TSP solution source.
 
-...This source was consulted to verify how reasonable the computed runtime of my implementation actually was or not, as I thought it appeared off.
+...This source (the GeeksforGeeks cited below) was consulted to verify how reasonable the computed runtime of my implementation actually was or not, as I thought it appeared off.
 
 I barely looked at the actual logic and code of the python source as its uber condensed look makes my eyes want to explode.
 
