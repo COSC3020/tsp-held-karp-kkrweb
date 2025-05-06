@@ -46,3 +46,103 @@ Test your new function; I've provided some basic testing code in `code.test.js`.
 What is the worst-case asymptotic time complexity of your implementation? What
 is the worst-case asymptotic memory complexity? Add your answer, including your
 reasoning, to this markdown file.
+
+
+//
+
+
+
+Name: Kane Kriz
+
+Start Date: 17 April 2025
+
+Last Edited: 28 April 2025
+
+Feedback Request 1 Date: 28 April 2025
+
+
+
+
+//
+
+
+Feedback Request 2 Date: 30 April 2025
+
+
+...
+
+
+//
+
+
+
+Response: 
+
+
+
+
+First, I want to analyze the functionality of the implementation step by step and work inwards to help determine the overall complexity. 
+
+The implementation begins with input validation through the checks `if(distanceMatrix == null || distanceMatrix.length == 0)` and `if(distanceMatrix.length == 1)`, which handle edge cases in constant time. 
+
+The core algorithm then initializes the city indices through the loop `for(var i = 0; i < distanceMatrix.length; i++) { citiesList.push(i); }`, requiring $O(n)$ time where n is the number of cities.
+
+The recursive `solve` function forms the heart of the implementation, processing city subsets through the base case `if(citiesList.length == 2)` and recursive decomposition. 
+
+Each recursive call handles a smaller subproblem through `var partialDistance = solve(remainingCities, nextCity, distanceMatrix)`.
+
+The combination step `var totalDistance = partialDistance + stepDistance` builds up complete solutions from these partial results. 
+
+The current implementation’s memoization key `JSON.stringify(citiesList) + start` ensures uniqueness and acts against potential collision issues.
+
+The algorithm must explore all possible city subsets and starting points, with n choices for the starting city and $\binom{n}{k}$ possible subsets for each subset size k, summing to $2^n$ total subsets.
+
+Each subset requires $O(n)$ processing time.
+
+The overall worst case asymptotic time complexity is thus $O(n^2 ∗ 2^n)$. 
+
+This matches the theoretical expectation for the help karp algorithm per the attatched python TSP solution source.
+
+...This source (the GeeksforGeeks cited below) was consulted to verify how reasonable the computed runtime of my implementation actually was or not, as I thought it appeared off.
+
+I barely looked at the actual logic and code of the python source as its uber condensed look makes my eyes want to explode.
+
+
+
+
+Now to consider the overall asymptotic memory complexity. 
+
+The implementation maintains a recursion stack that can reach depth n-1 levels.
+
+Each recursive level stores its remaining cities list through operations like `remainingCities.push(citiesList[i])`, requiring $O(n)$ space per level. 
+
+The memoization storage requires $O(n * 2^n)$ space for all city subsets.
+
+Temporary variables contribute constant space per recursion level.
+
+The recursion stack uses $O(n)$ space per call and $O(n^2)$ total space maximum.
+
+(via n-1 levels * O(n) storage per level, with subset storage requiring $O(n * 2^n)$ space).
+
+Due to this, the overall worst case asymptotic memory complexity is $O(n * 2^n)$
+
+
+
+//
+
+
+
+
+Plagiarism Acknowledgement: I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice.
+
+
+
+Citations:
+
+Ensured that any consulted logic / conceptual help to help move me in the right direction came only where applicable and with limited JS code
+
+“Traveling Salesman Problem (TSP) in Python.” GeeksforGeeks, 31 May 2024, www.geeksforgeeks.org/traveling-salesman-problem-tsp-in-python/.
+
+Liang, David. “Intro — Python Algorithms: Traveling Salesman Problem.” Medium, 17 July 2024, medium.com/@davidlfliang/intro-python-algorithms-traveling-salesman-problem-ffa61f0bd47b.
+
+the, Caching. “Memoization: Caching the Results of Expensive Function Calls.” SoftwarePatternsLexicon.com, 7 July 2024, softwarepatternslexicon.com/functional/optimizations/caching-and-specialization/memoization/. Accessed 30 Apr. 2025.
